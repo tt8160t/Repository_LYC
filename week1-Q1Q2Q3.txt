@@ -1,0 +1,65 @@
+-Week1-
+
+Q1: 1. Try the statements below in REPL. Please answer whether they are correct or not and explain the reasons. 
+
+val id = 9527
+==> 正確，id只是一個變數，而它被宣告了9527這個Int型態的值．
+
+var number : Int = 5.6 
+==>錯誤，number這個變數在此行中已經被指定成Int整數，所以不能等於5.6，有小數點的數值通常預設是Double，不然就是指定成Float．
+
+var title = "Hello Kotlin!"
+==> 正確，將title這個變數宣告成Hello Kotlin!這個String型態的值
+
+val content : String = null
+==> 錯誤，null在kotilin中是有定義為空值，如果漿content這個變數指定型態為String就不能等於null，但如果在String後面加個？變成val content : String？ = null，則上述就可行，問號？代表的是變數值可為null．
+
+val number : Double? = 556.6 
+==> 正確，將number這變數指定為 Double型態（有小數點）但後面有加？，代表同時也可為null值． 
+var list: List<String>? = listOf(null, null)
+==>錯誤，將list這變數指定為List且內容物必須為String，那也就代表list的值不能為null．更改正確方式為在String後加入？，代表list的值可為String或者null．
+
+var list: List<String?>? = listOf("Wayne", "Chen")
+==> 正確，將list這個變數指定為List型別並且內容物可以是字串也可視null，第二個出現的？代表的是list這個變數也可直接為null．
+
+list.size 
+==> 某些狀況下正確，主要是詢問list的size，所以代表說這個變數List不可以為空值，也就是在宣告型別時，後面不可以有問號．可以宣告內容物為null值，但整個list值不可為null． 
+list?.size
+==>正確，最保險的寫法，代表的是list的值可以是null值，假如有其他值存在，則會計算有幾個．
+
+Q2. Read the code below, choose the correct answer and explain the reason.
+var message = "Hello and welcome to AppWorks School :)" 
+when (message.length) { 
+    0 -> println("Aye!") 
+    in 1..39 -> println("Your grace.") 
+    in 40..56 -> println("My lord.") 
+    else -> println("You know nothing...") 
+}
+What will the code print? 
+"Hello and welcome to AppWorks School :)" 
+"Aye!" 
+"Your grace." 
+"My lord." 
+"You know nothing…"
+
+==>答案是c"Your grace." ，題目是主要是在考message這個變數所含有的字串值的長度，當它長度是0時印出(b)選項；長度介於1~39時印出(c)選項；長度介於40~56時則印出(d)選項；超過56以後通通都印出(e)選項． 而這其中有考驗計算長度的方式，在kotlin中，長度只能用於計算字串型別的直，而計算的方法除了“單一字母”, “單一文字”各計算成1的長度之外；”空格space”空一格也佔了長度1，以及“標點符號”也會佔一格長度． 所以上述“英文字母”共佔了長度31，“空白”佔了長度6，以及“標點符號”佔了2格，共39格，因此print出(c)選項
+
+
+Q3: Read the code below, choose the correct answer and explain the reason
+
+==> 邏輯思考： 1. 上面的題目總共有兩組array，第一組是在選項中變數名為“array”，第二組是題目已給名為units．使用for的方式將兩組array的值print出來． 2. 上述程式碼中最關鍵的是array.withIndex()，這一個公式主要是會會讓array依照“順序index”依序代出值．
+
+3. 從結果去反推會知道他依序print出來分別是1000的0次方, 1000的1次方, 1000的2次方依此類推到1000的6次方，所以也就代表說array這個變數他應該為 val array = arrayOf(1, 1000, 1000^2, 1000^3, 1000^4, 1000^5)
+
+4. 所以回歸到for迴圈那邊帶入會依序顯示的就是for(0,1), for(1,1000)….for(1,1000^5)
+而for裡面的第一位數(index)又會分別取出units這陣列的值，最後顯示出Output．
+ a. 錯誤，兩個部分，第一是創造一個array前面不用加new，第二是使用Array(Int)後面應該要有{條件}．
+
+b. 錯誤，語法上完全錯誤，如果是希望賦值100則不用加{}，如果是要用陣列也應該是val array = arrayOf(100)，但這就代表他只有一個值且值是100在for迴圈那邊就只會跑一次for(0,100)．
+
+c. 錯誤，語法上沒問題，建造一個size為的陣列，但由於後面的已經指定值就是1000.0.pow(10)，就代表他實際上是創立了一個從第0項第五項都是1000^10次方的陣列． 
+d. 正確，語法上沒問題，且Array(6)所代出的0~5依序帶入到1000.0的次方中，形成(1, 1000, 1000^2, 1000^3, 1000^4, 1000^5)得陣列．
+
+PS: pow的用法需要特別在終端機上額外輸入import kotlin.math.pow並且pow在使用上所帶入的數值應為double所以是使用1000.0.pow，而不是1000.pow．後續要輸出的時候由於不希望有小數點產生，因此又再轉換型別變成Long去除掉小數點．
+
+
