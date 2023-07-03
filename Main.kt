@@ -23,6 +23,6 @@ fun main() {
     human.attack()
     val mage = Mage("Sally" )
     mage.attack()
-    val bob = whethermana("Bob", 5)
+    val bob = whethermana("Bob", 0)
     bob.attack()
 }
