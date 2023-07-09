@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.example.android.navigation.ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="151dp"
+            android:layout_height="174dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="130dp"
+            android:contentDescription="@string/avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@mipmap/avatar" />
+
+        <TextView
+            android:id="@+id/nameTitle"
+            android:layout_width="175dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="?attr/colorPrimaryDark"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/name_title"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/nickNameTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+        <TextView
+            android:id="@+id/nickNameTitle"
+            android:layout_width="175dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="13dp"
+            android:background="?attr/colorPrimaryDark"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/nick_name"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/nickNameText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/nameTitle"
+            app:layout_constraintTop_toBottomOf="@+id/avatar"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <TextView
+            android:id="@+id/nickNameText"
+            android:layout_width="185dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Tony"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/nameText"
+            app:layout_constraintTop_toBottomOf="@+id/nickNameTitle" />
+
+        <TextView
+            android:id="@+id/nameText"
+            android:layout_width="185dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Yang Chia Lin"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/nickNameText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameTitle" />
+
+        <TextView
+            android:id="@+id/aboutMe"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="13dp"
+            android:background="@color/colorPrimaryDark"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/about_me"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/avatar" />
+
+        <TextView
+            android:id="@+id/about_me_text"
+            android:layout_width="0dp"
+            android:layout_height="217dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="14dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/about_me_text"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutMe" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
