@@ -1,0 +1,27 @@
+1. What is Encapsulation? Try to list out the benefits of Encapsulation.
+Encapsulation是屬於Kotlin中的“封裝”，封裝是將data和邏輯整合到一個單元中，並且將上述的資訊隱藏起來以防止外部的存取(不然就是需透過嚴格的接口）．它的好處包含了1. 隱藏內部的細節，加強了程式碼的安全性 2. 封裝可以簡化軟體之間的耦合，因為提供一個統一的街口，使得內部code可以更易讀, 穩定． 3. 後續的維護也只需要針對內部的結構進行更改，不用修改那些調用我們代碼的程序片段． 
+2. Try to explain what enum is and why we use them.
+enum是class中的一種用法，enum class稱為枚舉類，他常用在宣告一組具有相似屬性的物件，並且可以搭配when用法來使用．由於他裡面得物件值都是類似且具有相同屬性的值，所以藉由把enum把他包起來後，可以讓代碼更乾淨且易讀也較不容易出錯．
+
+3. How to use enum in Kotlin? Attach a sample code that uses enum in Kotlin.
+
+enum class Fruit(val price: Int, val color: String) {
+    Apple(100, "red"),
+    Banana(80, "yellow"),
+    Orange(60, "orange"),
+}
+
+fun main() {
+    val apple = Fruit.Apple
+    println("Apple price: ${apple.price}")
+    println("Apple color: ${apple.color}")
+    
+} 
+//將相似屬性的值放在enum內，以方便取得及閱讀．
+
+4. What are the differences between LinearLayout and RelativeLayout? Try to explain in detail.
+LinearLayout佈局方式主要是水平式佈局或者垂直式佈局，放進去的元件都會依照排列的方式去進行佈局並透過weight去設置所佔的權重比例；相較之下RelativeLayout主要是依照相對於父元素或者其他子元素的相對位置去進行排序．LinearLayout假如是水平式佈局，則每一行只能存在一個元件，且調整部分就只能水平式調整；而Relativelayout則由於是看相對位置，所以並無限制，但由於是看相對位置，所以每個元件至少要給予三個方向的相對位置．
+LinearLayout常用來定位的attribute: layout_weight, layout_width, layout_height, orientation ；而RelativeLayout除了含有上面LinearLayout的attribute之外，還有其他的像是layout_alignParentStart, layout_alignParentEnd之類的．
+
+5. Try to explain the benefits of ConstraintLayout. Why should you use it?
+ConstraintLayout相較於LinearLayout他更接近於RelativeLayout，但是他的靈活性又比RelativeLayout更靈活，譬如它提供了bias value，視圖之間可以透過簡易的拉線方式將圖對準，也或者可拉向parent邊界，而藉由這樣的拉handle的方式不但可以讓我們視覺上更清楚的操作，相對應的程式碼也會自動幫我們列出，而這是第四題兩種layout所沒有的簡易直觀且有效率的操作功能．
