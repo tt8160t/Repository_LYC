@@ -1,0 +1,19 @@
+What is Polymorphism? Try to explain in Mandarin
+
+多態性是一種概念，它的定義是為不同的資料型別提供一個統一的接口，像是interface class 或是abstract class作為父類別，而底下的可以利用extension的方式繼承父類別並擴充子類別所需得功能以達到多態性．過去學到的繼承inheritance是使用多態性中的一種方法，主要還是想表達就是統一接口，底下可以透過譬如subclass, extension等方式來繼承父類別．
+
+2. Here are the 7 important lifecycle methods of an Activity: i. onCreate() ii. onStart() iii. onResume() iv. onPause() v. onStop() vi. onDestroy() Try to explain when they are called during the lifecycle of Activity.
+
+整個程式的生命週期通常會是i => ii => => iii => iv => v => vi．
+整個程式的“開”，“關”也就是i, vi各只會有“一次”．
+譬如我在使用程式時，剛好有電話打進來，但是我的程式還是在“頁面上”時，會進入到iv, 而打完電話回來時則會透過iii回來．
+但是如果我將程式縮到“頁面下”時，則是會經過iv => v => onRestart => ii => iii．
+總之整個程式通常起始及終點一定是i跟vi, 而中途的過程都會是相對稱的，如果有iv就一定會有iii，如果有iv, v, 就一定會需要透過 ii, iii來回到程式．
+
+3. What is the Android Jetpack?
+
+定義就是：由google提供的一系列套件，用意在幫助開發者更好，更有效率，並且後續更好維護的開發，讓開發者可以專注在code邊馬上而不用去擔心不同版本或者不同手機的耦合問題．目前學到的套件有像是viewmodel, Room等等，都是他們提供的套件讓我們可以照著模板進行操作及維護．
+
+4. What is Coroutines? Why do we use it? Try to explain in Mandarin.
+中文叫做：協程．在一班簡易的程式碼中，他都是按照“線性的”的方式去進行，必須先完成一樣工作，才能再進行下一樣不能同步進行．但我們透過協程，可以讓不同階段的程式碼“同步”，或者“延後”執行，主要的用意就是希望主線程不要受到阻塞或者因為阻塞造成callback．
+舉例來說，我現在的ＵＩ屆面天氣報告想要顯是“溫度”以及“氣候”，我頁面會希望兩項結果同時呈現，因此我會設定coroutine要他們兩項作業都確定完成後再一次傳回，這樣可以避免不同時間傳回而造成的畫面延遲． 
