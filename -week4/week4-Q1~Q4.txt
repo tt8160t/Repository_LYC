@@ -1,15 +1,29 @@
 What is Polymorphism? Try to explain in Mandarin
 
-多態性是一種概念，它的定義是為不同的資料型別提供一個統一的接口，像是interface class 或是abstract class作為父類別，而底下的可以利用extension的方式繼承父類別並擴充子類別所需得功能以達到多態性．過去學到的繼承inheritance是使用多態性中的一種方法，主要還是想表達就是統一接口，底下可以透過譬如subclass, extension等方式來繼承父類別．
+多態性是一種概念，它的定義是為不同的資料型別提供一個統一的接口，像是interface class 或是abstract class作為父類別，而底下的可以利用subclass, extension的方式繼承父類別並擴充子類別所需得功能以達到多態性．過去學到的繼承inheritance是使用多態性中的一種方法，主要還是想表達就是統一接口，並可透過主要接口去分別對影下面的子類別進行特別化． 
+Extension舉例來說：
+open class Shape
+class Rectangle: Shape()
+
+fun Shape.getName() = "Shape"
+fun Rectangle.getName() = "Rectangle"
+
+fun printClassName(s: Shape) {
+    println(s.getName())
+}
+
+printClassName(Rectangle())
+
+"print出來是shape"
+Extension在 Kotlin 中是靜態解析的，它們實際上並不修改所擴展的類別。透過定義擴展，你並不會將新的成員插入到類別中，只是讓新的函式可以在這個類型的變數上使用點表示法呼叫。extension本身並不是多型，而是一種靜態解析的機制，而多型則是在執行時期根據物件實際型別來決定要調用的方法，所以用extension來解釋多型感覺有點不恰當．
+
 
 2. Here are the 7 important lifecycle methods of an Activity: i. onCreate() ii. onStart() iii. onResume() iv. onPause() v. onStop() vi. onDestroy() Try to explain when they are called during the lifecycle of Activity.
 
-整個程式的生命週期通常會是i => ii => => iii => iv => v => vi．
-整個程式的“開”，“關”也就是i, vi各只會有“一次”．
-譬如我在使用程式時，剛好有電話打進來，但是我的程式還是在“頁面上”時，會進入到iv, 而打完電話回來時則會透過iii回來．
-但是如果我將程式縮到“頁面下”時，則是會經過iv => v => onRestart => ii => iii．
-總之整個程式通常起始及終點一定是i跟vi, 而中途的過程都會是相對稱的，如果有iv就一定會有iii，如果有iv, v, 就一定會需要透過 ii, iii來回到程式．
-
+(1) onCreate: 當一個程式剛被打開（創立）時，第一步就是onCreate，此時會進行一些初始化的動作，來將程式Activity構建完成．
+(2) onStart: 當Activity構建完畢後，便會進入到onStart，此時Activity即將會給使用者（但尚未），也就是進入到正在跑的ＵＩ界面，但實際上尚未建構完成，很快便會進入到onResume．
+(3) onResume: 當Activity即將進入前景時進入到onResume之後，程式的ＵＩ介面便會開始跟使用者互動．
+(4) onPause: 當程式突然之間被中斷，譬如電話打進來，或者外面有通知突然出現在頁面上，ＡＰＰ知道説是因為被外部元件打擾，所以他會進入到onPause等待外部元件消失後，便會再透過onResume回到程式介面中． (5) onStop: 當我將程式從頁面縮到背景時，也就是目前頁面我開始使用其他app時，程式知道說，我暫時不用他了，所以僅幫我保存一些頁面資料，他便會從onPause更近一步道onStop，通常只要在背景效能不要吃太兇，程式一直都會維持在onStop不會更近一步道onDestroy． (6) onDestroy: 當我程式即將退出並回到頁面時，他便會進入到onDestroy並關閉，但有一個狀況特例，就是當發生了configuration change時，此時他便會進入到onDestroy再重新呼叫onRestart，主要是因為藉由Destroy的方式可以更快屎configuration change更快進行． 
 3. What is the Android Jetpack?
 
 定義就是：由google提供的一系列套件，用意在幫助開發者更好，更有效率，並且後續更好維護的開發，讓開發者可以專注在code邊馬上而不用去擔心不同版本或者不同手機的耦合問題．目前學到的套件有像是viewmodel, Room等等，都是他們提供的套件讓我們可以照著模板進行操作及維護．
