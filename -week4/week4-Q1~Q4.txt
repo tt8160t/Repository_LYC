@@ -1,21 +1,32 @@
 What is Polymorphism? Try to explain in Mandarin
 
-多態性是一種概念，它的定義是為不同的資料型別提供一個統一的接口，像是interface class 或是abstract class作為父類別，而底下的可以利用subclass, extension的方式繼承父類別並擴充子類別所需得功能以達到多態性．過去學到的繼承inheritance是使用多態性中的一種方法，主要還是想表達就是統一接口，並可透過主要接口去分別對影下面的子類別進行特別化． 
-Extension舉例來說：
-open class Shape
-class Rectangle: Shape()
-
-fun Shape.getName() = "Shape"
-fun Rectangle.getName() = "Rectangle"
-
-fun printClassName(s: Shape) {
-    println(s.getName())
+多態性是一種概念，它的定義是為不同的資料型別提供一個統一的接口，像是interface class 或是abstract class作為父類別，而底下的可以利用subclass的方式繼承父類別並擴充子類別所需得功能以達到多態性．過去學到的繼承inheritance是使用多態性中的一種方法，主要還是想表達就是統一接口，並可透過主要接口去分別對影下面的子類別進行特別化． 
+abstract class Person(val name: String) {
+    abstract fun makeColor()
 }
 
-printClassName(Rectangle())
 
-"print出來是shape"
-Extension在 Kotlin 中是靜態解析的，它們實際上並不修改所擴展的類別。透過定義擴展，你並不會將新的成員插入到類別中，只是讓新的函式可以在這個類型的變數上使用點表示法呼叫。extension本身並不是多型，而是一種靜態解析的機制，而多型則是在執行時期根據物件實際型別來決定要調用的方法，所以用extension來解釋多型感覺有點不恰當．
+class Black(name: String) : Person(name) {
+    override fun makeColor() {
+        println("$name：我是黑人")
+    }
+}
+
+
+class White(name: String) : Person(name) {
+    override fun makeColor() {
+        println("$name：我是白人")
+    }
+}
+
+fun main() {
+    val black = Black("小黑")
+    val white = White("小白")
+    black.makeColor() // 小黑：我是黑人
+    white.makeColor() // 小白：我是白人
+
+}
+因為黑人跟白人都是屬於person，所以他們做為person的子類別，並且因他們各自的特性，而發出不一樣的結果，而這個就稱為多型．
 
 
 2. Here are the 7 important lifecycle methods of an Activity: i. onCreate() ii. onStart() iii. onResume() iv. onPause() v. onStop() vi. onDestroy() Try to explain when they are called during the lifecycle of Activity.
